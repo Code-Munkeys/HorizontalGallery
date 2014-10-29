@@ -11,3 +11,6 @@ responsible for determining it's worthiness for any given application or task. H
 states that the code is for learning purposes only and is not guaranteed to conform to any
 programming style, standard, or be an adequate answer for any given problem.
 
+url: https://github.com/Code-Munkeys/HorizontalGallery
+
+
