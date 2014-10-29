@@ -32,7 +32,8 @@
 @implementation CMFViewController
 
 @synthesize pgeScrollLeftRight;
-int pgeScrollLeftRightIndex = 0;
+long pgeScrollLeftRightIndex = 0;
+long pgeDeletePoint = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,21 +44,17 @@ int pgeScrollLeftRightIndex = 0;
     return self;
 }
 
+-(void)Initialise
+{
+    [self loadImages];
+    [self setupCollectionView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self loadImages];
-    [self setupCollectionView];
-    
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        // iOS 7
-        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    } else {
-        // iOS 6
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-    }
-
+    [self Initialise];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -101,9 +98,11 @@ int pgeScrollLeftRightIndex = 0;
     [cell setImageName:imageName];
     [cell updateCell];
     
-    NSLog(@"%ld",(long)indexPath.item);
     pgeScrollLeftRightIndex = indexPath.item;
     pgeScrollLeftRight.currentPage = pgeScrollLeftRightIndex;
+    
+    NSLog(@"Image Index: %ld",indexPath.item);
+    NSLog(@"%Image Asset: %@",[self.dataArray objectAtIndex:pgeScrollLeftRightIndex]);
     
     return cell;
 }
@@ -112,14 +111,15 @@ int pgeScrollLeftRightIndex = 0;
     return self.collectionView.frame.size;
 }
 
-
 #pragma mark -
 #pragma mark Data methods
 -(void)loadImages {
     
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
     self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
-
+    NSLog(@"Image List:\n%@",self.dataArray);
+    pgeScrollLeftRight.numberOfPages = [self.dataArray count];
+    //pageControl.currentPage = 0;
 }
 
 #pragma mark -
@@ -163,6 +163,10 @@ int pgeScrollLeftRightIndex = 0;
 
 - (IBAction)btnTrash:(id)sender
 {
+    //[self.dataArray removeObjectAtIndex:pgeScrollLeftRightIndex];
+    pgeDeletePoint = pgeScrollLeftRightIndex;
+    [self setupCollectionView];
+    [self.collectionView reloadData];
 }
 
 - (IBAction)pgeScrollLeftRight:(id)sender

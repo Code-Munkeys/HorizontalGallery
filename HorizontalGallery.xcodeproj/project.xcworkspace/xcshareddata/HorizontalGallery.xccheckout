@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F9362828-DA48-4F25-9C51-C36122EBED64</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HorizontalGallery</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3BC81391220419CDB8DF55F4D5E6940326F611FC</key>
+		<string>https://github.com/Code-Munkeys/HorizontalGallery.git</string>
+		<key>D9F3F711CA95CCD0909EC3CECBA5BE29EEC0E87A</key>
+		<string>https://github.com/ayestaran/Hitched.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HorizontalGallery.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3BC81391220419CDB8DF55F4D5E6940326F611FC</key>
+		<string>../..</string>
+		<key>D9F3F711CA95CCD0909EC3CECBA5BE29EEC0E87A</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Code-Munkeys/HorizontalGallery.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3BC81391220419CDB8DF55F4D5E6940326F611FC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D9F3F711CA95CCD0909EC3CECBA5BE29EEC0E87A</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3BC81391220419CDB8DF55F4D5E6940326F611FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HorizontalGallery</string>
+		</dict>
+	</array>
+</dict>
+</plist>
