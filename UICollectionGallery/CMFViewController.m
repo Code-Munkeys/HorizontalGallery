@@ -31,6 +31,9 @@
 
 @implementation CMFViewController
 
+@synthesize pgeScrollLeftRight;
+int pgeScrollLeftRightIndex = 0;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -98,8 +101,11 @@
     [cell setImageName:imageName];
     [cell updateCell];
     
-    return cell;
+    NSLog(@"%ld",(long)indexPath.item);
+    pgeScrollLeftRightIndex = indexPath.item;
+    pgeScrollLeftRight.currentPage = pgeScrollLeftRightIndex;
     
+    return cell;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
