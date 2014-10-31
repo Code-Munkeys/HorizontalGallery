@@ -81,6 +81,8 @@ long PhotosToUpload = 0;
     [flowLayout setMinimumLineSpacing:0.0f];
     [self.collectionView setPagingEnabled:YES];
     [self.collectionView setCollectionViewLayout:flowLayout];
+    PhotosToUpload = [self.dataArray count];
+    lblPhotosToUpload.text = [NSString stringWithFormat:@"%ld photos are uploading", PhotosToUpload];
 }
 
 
