@@ -16,7 +16,6 @@
 
 @interface CMFViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic) int currentIndex;
 @property (strong, nonatomic) IBOutlet UILabel *lblPhotosToUpload;
 
@@ -31,9 +30,11 @@
 
 @implementation CMFViewController
 
-@synthesize pgeScrollLeftRight;
+@synthesize pgeScrollLeftRight, lblPhotosToUpload;
+
 long pgeScrollLeftRightIndex = 0;
 long pgeDeletePoint = 0;
+long PhotosToUpload = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,6 +55,7 @@ long pgeDeletePoint = 0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.dataArray = [NSMutableArray array];
     [self Initialise];
 }
 
@@ -101,8 +103,8 @@ long pgeDeletePoint = 0;
     pgeScrollLeftRightIndex = indexPath.item;
     pgeScrollLeftRight.currentPage = pgeScrollLeftRightIndex;
     
-    NSLog(@"Image Index: %ld",indexPath.item);
-    NSLog(@"%Image Asset: %@",[self.dataArray objectAtIndex:pgeScrollLeftRightIndex]);
+    NSLog(@"\nImage index: %ld",(long)indexPath.item);
+    NSLog(@"\nCurrent image name: %@",[self.dataArray objectAtIndex:pgeScrollLeftRightIndex]);
     
     return cell;
 }
@@ -117,7 +119,7 @@ long pgeDeletePoint = 0;
     
     NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Assets"];
     self.dataArray = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:NULL];
-    NSLog(@"Image List:\n%@",self.dataArray);
+    NSLog(@"\n\nImage List:\n%@",self.dataArray);
     pgeScrollLeftRight.numberOfPages = [self.dataArray count];
     //pageControl.currentPage = 0;
 }
@@ -163,10 +165,13 @@ long pgeDeletePoint = 0;
 
 - (IBAction)btnTrash:(id)sender
 {
-    //[self.dataArray removeObjectAtIndex:pgeScrollLeftRightIndex];
     pgeDeletePoint = pgeScrollLeftRightIndex;
-    [self setupCollectionView];
+    [self.dataArray removeObjectAtIndex:pgeDeletePoint];
+    PhotosToUpload = [self.dataArray count];
+    pgeScrollLeftRight.numberOfPages = PhotosToUpload;
     [self.collectionView reloadData];
+    lblPhotosToUpload.text = [NSString stringWithFormat:@"%ld photos are uploading", PhotosToUpload];
+    NSLog(@"\n\nImage List:\n%@",self.dataArray);
 }
 
 - (IBAction)pgeScrollLeftRight:(id)sender

@@ -15,4 +15,6 @@
 
 @interface CMFViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (retain) NSMutableArray *dataArray;
+
 @end
